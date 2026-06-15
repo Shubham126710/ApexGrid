@@ -41,6 +41,16 @@ export const api = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(userData)
+        }).then(handleResponse),
+        forgotPassword: (email) => fetch(`${BASE_URL}/auth/forgot-password`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+        }).then(handleResponse),
+        resetPassword: (token, newPassword) => fetch(`${BASE_URL}/auth/reset-password`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token, newPassword })
         }).then(handleResponse)
     },
     teams: {

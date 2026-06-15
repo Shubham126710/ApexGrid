@@ -4,6 +4,8 @@ import Layout from './components/layout/Layout';
 import AuthLayout from './components/layout/AuthLayout';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
+import ForgotPassword from './pages/auth/ForgotPassword';
+import ResetPassword from './pages/auth/ResetPassword';
 import Dashboard from './pages/Dashboard';
 import Landing from './pages/Landing';
 import SplashScreen from './components/layout/SplashScreen';
@@ -25,11 +27,13 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
-        
+
         {/* Authentication Routes */}
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
         </Route>
 
         <Route path="/app" element={<Layout />}>

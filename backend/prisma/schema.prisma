@@ -11,9 +11,11 @@ model User {
   name         String
   email        String   @unique
   passwordHash String
-  teamId       Int?
-  team         Team?    @relation(fields: [teamId], references: [id])
-  createdAt    DateTime @default(now())
+  teamId           Int?
+  team             Team?    @relation(fields: [teamId], references: [id])
+  resetToken       String?
+  resetTokenExpiry DateTime?
+  createdAt        DateTime @default(now())
 }
 
 model Team {
