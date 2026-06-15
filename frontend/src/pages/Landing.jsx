@@ -156,7 +156,7 @@ const Landing = () => {
               </div>
               
               <div className="w-full relative bg-[#0a0a0a]">
-                <img src="/hero.png" alt="ApexGrid Dashboard" className="w-full h-auto object-cover" />
+                <img src="/screenshots/dashboard.png" alt="ApexGrid Dashboard" className="w-full h-auto object-cover" />
               </div>
             </div>
           </div>
