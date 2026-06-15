@@ -46,11 +46,6 @@ Built to ensure strict FIA compliance, the platform provides complete data isola
 ![Home Page](frontend/public/screenshots/landing_page.png)
 <p align="center"><em>A premium, high-performance interface that introduces the platform to teams.</em></p>
 
-### Global Dashboard
-
-![Global Dashboard](frontend/public/screenshots/dashboard.png)
-<p align="center"><em>The primary workspace for race engineers, showing customized telemetry and active components.</em></p>
-
 ### Secure Authentication
 
 ![Login](frontend/public/screenshots/login.png.png)
@@ -60,6 +55,11 @@ Built to ensure strict FIA compliance, the platform provides complete data isola
 
 ![Register](frontend/public/screenshots/register.png)
 <p align="center"><em>Secure registration and team configuration flow.</em></p>
+
+### Global Dashboard
+
+![Global Dashboard](frontend/public/screenshots/dashboard.png)
+<p align="center"><em>The primary workspace for race engineers, showing customized telemetry and active components.</em></p>
 
 ### Database Management
 
