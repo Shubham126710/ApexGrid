@@ -43,16 +43,28 @@ Built to ensure strict FIA compliance, the platform provides complete data isola
 
 ### The Landing Page
 
-![Home Page](frontend/public/hero.png)
+![Home Page](frontend/public/screenshots/landing_page.png)
 <p align="center"><em>A premium, high-performance interface that introduces the platform to teams.</em></p>
 
 ### Global Dashboard
 
+![Global Dashboard](frontend/public/screenshots/dashboard.png)
 <p align="center"><em>The primary workspace for race engineers, showing customized telemetry and active components.</em></p>
 
 ### Secure Authentication
 
+![Login](frontend/public/screenshots/login.png.png)
 <p align="center"><em>A robust login system authenticating users directly to their designated team's secure environment.</em></p>
+
+### Team Onboarding
+
+![Register](frontend/public/screenshots/register.png)
+<p align="center"><em>Secure registration and team configuration flow.</em></p>
+
+### Database Management
+
+![Database](frontend/public/screenshots/database.png)
+<p align="center"><em>Manage critical components, expenses, shipments, and complex queries efficiently.</em></p>
 
 ---
 
