@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String   @unique
+  passwordHash String
+  teamId       Int?
+  team         Team?    @relation(fields: [teamId], references: [id])
+  createdAt    DateTime @default(now())
+}
+
+model Team {
+  id          Int      @id @default(autoincrement())
+  name        String
+  nationality String
+  baseCity    String
+  createdAt   DateTime @default(now())
+
+  drivers    Driver[]
+  staff      Staff[]
+  components Component[]
+  shipments  Shipment[]
+  expenses   Expense[]
+  users      User[]
+  settings   TeamSettings?
+}
+
+model TeamSettings {
+  id              Int      @id @default(autoincrement())
+  autoReroute     Boolean  @default(true)
+  criticalAlerts  Boolean  @default(false)
+  teamId          Int      @unique
+  team            Team     @relation(fields: [teamId], references: [id])
+  updatedAt       DateTime @updatedAt
+}
+
+model Driver {
+  id          Int      @id @default(autoincrement())
+  firstName   String
+  lastName    String
+  nationality String
+  number      Int
+  teamId      Int
+  team        Team     @relation(fields: [teamId], references: [id])
+  createdAt   DateTime @default(now())
+}
+
+model Staff {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  role      String // Engineer, Mechanic, Team Principal, etc.
+  teamId    Int
+  team      Team     @relation(fields: [teamId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Circuit {
+  id        Int      @id @default(autoincrement())
+  name      String
+  country   String
+  city      String
+  length    Float
+  races     Race[]
+  createdAt DateTime @default(now())
+}
+
+model Race {
+  id        Int      @id @default(autoincrement())
+  name      String
+  date      DateTime
+  circuitId Int
+  circuit   Circuit  @relation(fields: [circuitId], references: [id])
+  createdAt DateTime @default(now())
+
+  shipments Shipment[]
+  hotels    Hotel[]
+  flights   Flight[]
+  expenses  Expense[]
+}
+
+model Component {
+  id        Int      @id @default(autoincrement())
+  type      String // Engine, Gearbox, Front Wing, Rear Wing, Chassis, Tires
+  status    String // Active, Damaged, Retired, Spare
+  teamId    Int
+  team      Team     @relation(fields: [teamId], references: [id])
+  createdAt DateTime @default(now())
+
+  expenses Expense[]
+}
+
+model Shipment {
+  id          Int      @id @default(autoincrement())
+  description String
+  status      String // In Transit, Delivered, Preparing
+  origin      String
+  destination String
+  teamId      Int
+  team        Team     @relation(fields: [teamId], references: [id])
+  raceId      Int?
+  race        Race?    @relation(fields: [raceId], references: [id])
+  createdAt   DateTime @default(now())
+}
+
+model Hotel {
+  id        Int      @id @default(autoincrement())
+  name      String
+  address   String
+  checkIn   DateTime
+  checkOut  DateTime
+  raceId    Int
+  race      Race     @relation(fields: [raceId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Flight {
+  id           Int      @id @default(autoincrement())
+  flightNumber String
+  departure    DateTime
+  arrival      DateTime
+  origin       String
+  destination  String
+  raceId       Int
+  race         Race     @relation(fields: [raceId], references: [id])
+  createdAt    DateTime @default(now())
+}
+
+model Expense {
+  id          Int        @id @default(autoincrement())
+  amount      Float
+  category    String // Travel, Component, Staff, Logistics
+  description String
+  date        DateTime
+  teamId      Int
+  team        Team       @relation(fields: [teamId], references: [id])
+  raceId      Int?
+  race        Race?      @relation(fields: [raceId], references: [id])
+  componentId Int?
+  component   Component? @relation(fields: [componentId], references: [id])
+  createdAt   DateTime   @default(now())
+}
