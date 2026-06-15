@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5001/api';
+const BASE_URL = import.meta.env.PROD ? '/api' : 'http://localhost:5001/api';
 
 const getHeaders = (options = {}) => {
     const headers = { ...options };
